@@ -1,6 +1,7 @@
 import React from 'react';
 import "../app/globals.css";
 import Navbar from '@/components/Navbar';
+import AutherList from '@/components/AutherList';
 import Dashboard from '@/components/Dashboard';
 import Link from 'next/link';
 
@@ -14,7 +15,8 @@ const Index: React.FC = () => {
        
        </div>
        <Link href="/">
-       <Dashboard/>
+       <AutherList/>
+       {/* <Dashboard/> */}
        </Link>
        
        
