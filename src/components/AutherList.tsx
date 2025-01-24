@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
-interface AUTHER{
+interface AUTHER {
   id: number;
   Auther_name: string;
   email: string;
+  bio:string;
 }
 
 const AutherList: React.FC = () => {
@@ -14,10 +14,14 @@ const AutherList: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/users');
-        setAuthers(response.data);
+        const response = await fetch('http://localhost:3000/auther');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setAuthers(data);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching authers:', error);
       } finally {
         setLoading(false);
       }
@@ -32,11 +36,11 @@ const AutherList: React.FC = () => {
 
   return (
     <div>
-      <h1>User List</h1>
+      <h1>Auther List</h1>
       <ul>
         {authers.map((auther) => (
           <li key={auther.id}>
-            {/* {user.name} - {user.email} */}
+            {auther.id}
           </li>
         ))}
       </ul>
