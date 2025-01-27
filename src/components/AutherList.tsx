@@ -73,18 +73,31 @@ fetchBooks();
 
   return (
     <div>
-      <h1>Auther List</h1>
-      <ul>
+  <h1 className="text-center bg-slate-900 text-white">Author List</h1>
+  <ul className="grid grid-cols-3 gap-4 p-4">
+    {authers.map((author) => (
+      <li
+        key={author.id}
+        className="border rounded-lg p-4 bg-white shadow-md flex flex-col items-start"
+      >
+        <span className="font-semibold">Authors Name:{author.auther_name}</span>
+        <ul>
+          {books.filter((books)=>books.auther_id===author.id).map((books)=>(
+            <li key={books.id}>
+              
+              <span className="text-gray-600 flex">Books Written:{books.books_name}</span>
 
-        {authers.map((authers) => (
-          <li key={authers.id}>
-            {authers.auther_name}
-            
+            </li>
+          ))}
+        </ul>
+        
+        <span className="text-gray-600"> Authors Eamil:{author.email}</span>
+        <span className=" text-slate-950"> Auther Bio:{author.bio}</span>
+      </li>
+    ))}
+  </ul>
+</div>
 
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 };
 
