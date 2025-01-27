@@ -14,7 +14,7 @@ const Index: React.FC = () => {
        <Navbar/>
        
        </div>
-       <Link href="/">
+       <Link href="/home">
        <AutherList/>
        {/* <Dashboard/> */}
        </Link>
